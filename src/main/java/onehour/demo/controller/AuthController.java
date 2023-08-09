@@ -35,7 +35,7 @@ public class AuthController {
     public ResponseEntity<TokenDto> authorize(@Valid @RequestBody LoginDto loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =//유저네임비번 인증 토큰 생성
-                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+                new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword());
 
         //authenticatetoken통해 authenticate메서드가 실행이 될 떄
         //내가 만든 customuserdetailsservice class의 loadUserbyUsernamemethod가 실행된다., 이값을 가지고 authentication 객체 생성

@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 public class LoginDto {
 
     @NotNull//null이면 안된다 -> validation관련 annotation
-    @Size(min = 3, max = 50)//validation관련 annotation
-    private String username;
+    @Size(min = 5, max = 50)//validation관련 annotation
+    private String email;
 
     @NotNull
     @Size(min = 3, max = 100)

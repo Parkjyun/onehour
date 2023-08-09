@@ -18,13 +18,18 @@ import java.util.stream.Collectors;
 public class UserDto {
 
     @NotNull
-    @Size(min = 3, max = 50)
-    private String username;
+    @Size(min = 5, max = 50)
+    private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)//password는 직렬화(serialization)되지 않는다
     @NotNull//entity에서 바로 jsonignore하지 않고 jsonproperty로 dto에서 막은 이유 : jsonignore시 deserialize도 못해 valid를 통한 검증못해서 jsonproperty로 직렬화만 막음
     @Size(min = 3, max = 100)
     private String password;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)//password는 직렬화(serialization)되지 않는다
+    @NotNull//entity에서 바로 jsonignore하지 않고 jsonproperty로 dto에서 막은 이유 : jsonignore시 deserialize도 못해 valid를 통한 검증못해서 jsonproperty로 직렬화만 막음
+    @Size(min = 3, max = 100)
+    private String confirm;
 
     @NotNull
     @Size(min = 3, max = 50)
@@ -36,7 +41,7 @@ public class UserDto {
         if(user == null) return null;
 
         return UserDto.builder()
-                .username(user.getUsername())
+                .email(user.getUsername())
                 .nickname(user.getNickname())
                 .authorityDtoSet(user.getAuthorities().stream()
                         .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
